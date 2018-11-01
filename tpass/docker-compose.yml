@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    image: tpass_web
+    build:
+      context: .
+      dockerfile: ./docker/frontend/local/Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env

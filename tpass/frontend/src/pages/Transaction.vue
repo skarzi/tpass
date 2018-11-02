@@ -9,7 +9,12 @@
       </div>
       <div class="col-xs-12 spinner text-center align-center">
         <Lottie
-          :options="lottieOptions"
+          :options="checkLottieOptions"
+          v-on:animCreated="handleCheckAnimation"
+        />
+        <Lottie
+          :options="spinnerLottieOptions"
+          v-on:animCreated="handleSpinnerAnimation"
         />
       </div>
       <div class="col-xs-12 message">
@@ -21,7 +26,8 @@
 
 <script>
 import Lottie from 'vue-lottie'
-import * as animationData from '../assets/ripple.json'
+import * as spinnerAnimationData from '../assets/ripple.json'
+import * as checkAnimationData from '../assets/check_animation.json'
 import { createNamespacedHelpers } from 'vuex'
 
 const transactionsNamespace = createNamespacedHelpers('transactions')
@@ -34,8 +40,11 @@ export default {
   data () {
     return {
       transactionID: this.$route.params.transactionID,
-      lottieOptions: {
-        animationData: animationData.default
+      spinnerLottieOptions: {
+        animationData: spinnerAnimationData.default
+      },
+      checkLottieOptions: {
+        animationData: checkAnimationData.default
       }
     }
   },
@@ -45,6 +54,7 @@ export default {
       if (this.transactionData.status === 1) {
         return 'Approve or reject log in attempt on device.'
       } else if (this.transactionData.status === 2) {
+        this.showCheckAnimation()
         return 'Access granted'
       } else if (this.transactionData.status === 3) {
         return 'Access rejected'
@@ -56,7 +66,21 @@ export default {
   methods: {
     ...transactionsNamespace.mapActions([
       'setTransactionData'
-    ])
+    ]),
+    handleSpinnerAnimation (anim) {
+      this.spinnerAnim = anim
+    },
+    handleCheckAnimation (anim) {
+      this.checkAnim = anim
+      this.checkAnim.stop()
+      this.checkAnim.wrapper.style.display = 'none'
+    },
+    showCheckAnimation () {
+      this.spinnerAnim.destroy()
+      this.spinnerAnim.wrapper.style.display = 'none'
+      this.checkAnim.wrapper.style.display = 'block'
+      this.checkAnim.play()
+    }
   },
   mounted () {
     // set few seconds timeout after which set transaction status to rejected

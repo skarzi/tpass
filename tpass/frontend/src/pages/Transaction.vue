@@ -44,7 +44,8 @@ export default {
         animationData: spinnerAnimationData.default
       },
       checkLottieOptions: {
-        animationData: checkAnimationData.default
+        animationData: checkAnimationData.default,
+        loop: false
       }
     }
   },
@@ -85,25 +86,30 @@ export default {
   mounted () {
     // set few seconds timeout after which set transaction status to rejected
     // and redirect user to scannner
+    this.$q.loading.hide()
     const ws = new WebSocket(
-      `ws://localhost:8000/ws/transactions/${this.transactionData.id}`
+      `wss://4fa2dd19.ngrok.io/ws/transactions/${this.transactionData.id}`
     )
     ws.onmessage = (event) => {
       console.log('ws message')
       let transaction = JSON.parse(event.data)
       this.setTransactionData(transaction.data)
-      setTimeout(() => {
-        console.log('redirecting to /')
-        this.$router.push('/')
-      }, 4000)
-    }
-    setTimeout(() => {
-      if (this.transactionData.status === 1) {
-        ws.send(JSON.stringify({
-          status: 'rejected'
-        }))
+      if (transaction.status !== 1) {
+        setTimeout(() => {
+          console.log('redirecting to /')
+          this.$router.push('/')
+        }, 5500)
       }
-    }, 10000)
+    }
+    ws.onopen = (event) => {
+      setTimeout(() => {
+        if (this.transactionData.status === 1) {
+          ws.send(JSON.stringify({
+            status: 'rejected'
+          }))
+        }
+      }, 11000)
+    }
   }
 }
 </script>

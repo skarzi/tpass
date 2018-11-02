@@ -34,8 +34,8 @@ export default {
         this.$emit('transaction-init', data)
       } else {
         this.$emit('invalid-data', data)
+        this.paused = false
       }
-      this.paused = false
     },
     isQRDataValid (data) {
       return true

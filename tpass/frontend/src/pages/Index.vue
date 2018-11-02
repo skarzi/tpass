@@ -69,7 +69,7 @@ export default {
   filters: {
     urlize (value) {
       let url = value
-      const maxLength = 20
+      const maxLength = 17
       try {
         const urlObject = new URL(value)
         url = urlObject.hostname
@@ -88,7 +88,7 @@ export default {
   },
   mounted () {
     this.$axios.get(
-      'http://localhost:8000/transactions/',
+      'https://4fa2dd19.ngrok.io/transactions/',
       {
         params: {
           page_size: 5
@@ -111,7 +111,7 @@ export default {
   border solid $primary 1px
 
 .container
-  margin-top 25%
+  margin-top 20%
 
 .logo
   height 80px

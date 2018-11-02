@@ -43,7 +43,7 @@ export default {
       })
       console.log(`init transaction with data: "${transactionData}"`)
       const ws = new WebSocket(
-        `ws://localhost:8000/ws/transactions/${transactionID}`
+        `wss://4fa2dd19.ngrok.io/ws/transactions/${transactionID}`
       )
       console.log(ws)
       ws.onopen = (event) => {
@@ -53,7 +53,6 @@ export default {
           status: 'init'
         }
         ws.send(JSON.stringify(data))
-        this.$q.loading.hide()
       }
       ws.onmessage = (event) => {
         let transaction = JSON.parse(event.data)

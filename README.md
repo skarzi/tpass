@@ -16,16 +16,17 @@ This demo project shows you:
 4. How tpass smart contract is build
 
 ## How it works
-![alt text](https://lh5.googleusercontent.com/sl6Z0wHpqiFg_v_OShv7b1UZzAvIqFH2eK8AwApDL_aYAyXNorciBp8GwzvS_MV0fyC_thWdqQyupVJuSXqA=w1920-h969-rw)
-1. **Webservice shows you a qr code you scan with your smartphone**
-![alt text](https://lh6.googleusercontent.com/laqRgE9t0JucRzRQAcXY9_sBHZZLGSQNk4XPX3sThW9BXJWinAUs9gWvwcB8tyqhh_TmBKwc5fmY-r-xeZ1d=w1920-h969-rw)
+![how it works](https://i.imgur.com/sEmQRkM.png)
+1. You go to a website integrated with tpass
+**Webservice shows you a qr code you scan with your smartphone**
+![example site](https://i.imgur.com/TxQ2649.png)
 2. **Message for authorization is pushed to hardware device**
 3. **You need to authenticate on token and smartphone**
-![alt text](https://lh5.googleusercontent.com/ORs2snz7w1FprSnownDArdoJ2-CNJIU0ByCr5M4SYgpzQK6kOlgPmCOgCpXH3Bx2J5dUE3rGJkv_4ow_wpcv=w1920-h920-rw)
-![alt text](https://lh5.googleusercontent.com/dwtQ3LD_OTOpB6EikGW0clauB3FUigchQdiXIylFj5-lAy6h9_VNbLka_mkjiv3bBAdJikWZtVCPpqTrTN6b=w1920-h920-rw)
+![app](https://i.imgur.com/FuTBI15.png)
+![approve login](https://i.imgur.com/V8SqPxy.png)
 4. **Blockchain verifies the messages**
 5. **You are authorized :)**
-![alt text](https://lh3.googleusercontent.com/gj3yr_78xTIITRWrpkcVZC5CtPhKz7FaR0MTOpC0UfNdmTBAVHPLt28qy9r0bRG2IRHVuJuu9CUA0KRfG-BQ=w1920-h969)
+![authorized](https://i.imgur.com/Rq2t82o.png)
 
 ## Getting Started
 The purpose of this paragraph is to setup you development environment and let you develop this project yourself.
@@ -47,7 +48,7 @@ docker-compose up --build
 The app is running under 
 `localhost:8080`
 
-![alt text](https://lh3.googleusercontent.com/ymnzKMZPE2A_g4ZmGCooTEM7CW6o0_gzkjJgvc7LvRAU63dDymoj1B289mkW9D5h-6Hr_SRXOzjf1r8z1QLO=w1920-h920-rw)
+![mobile app](https://i.imgur.com/ey1Q7O0.png)
 #### Smartcontract
 To start the smartcontract you need to have _EOS.IO_ on your computer. 
 Full documentation can be found here [eos](https://developers.eos.io/)
@@ -115,7 +116,7 @@ cleos push action testacc hi '["DAOuser"]' -p DAOuser@active
 #### Hardware
 Hardware uses sparkfun nrf52832 breakout board and 128x64 monochrome oled screen with sh1106 i2c controller.
 
-![alt text](https://lh6.googleusercontent.com/9UITQkZWaEraV00-TlSD-nJtVrFnaR-M58xQcRNi5mjntNouXicZEHnypGd7j972Kg7EX7sMwDXWzXRDdkei=w1920-h920-rw)
+![hardware](https://i.imgur.com/6QkiHeL.jpg)
 
 To install it on your arduino board you should follow instruction on website [Arduino](https://www.arduino.cc/en/Guide/HomePage)
 

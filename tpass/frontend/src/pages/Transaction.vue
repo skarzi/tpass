@@ -1,6 +1,9 @@
 <template>
   <q-page class="flex fullscreen" padding>
-    <div class="row text-center q-px-lg">
+    <div
+      class="row text-center q-px-lg"
+      @click="sendSuccessMessage"
+    >
       <div class="col-xs-12 transaction q-mt-lg">
         Attempting to log in to
         <span class="transaction-id">
@@ -81,16 +84,21 @@ export default {
       this.spinnerAnim.wrapper.style.display = 'none'
       this.checkAnim.wrapper.style.display = 'block'
       this.checkAnim.play()
+    },
+    sendSuccessMessage () {
+      this.ws.send(JSON.stringify({
+        status: 'approved'
+      }))
     }
   },
   mounted () {
     // set few seconds timeout after which set transaction status to rejected
     // and redirect user to scannner
     this.$q.loading.hide()
-    const ws = new WebSocket(
+    this.ws = new WebSocket(
       `wss://4fa2dd19.ngrok.io/ws/transactions/${this.transactionData.id}`
     )
-    ws.onmessage = (event) => {
+    this.ws.onmessage = (event) => {
       console.log('ws message')
       let transaction = JSON.parse(event.data)
       this.setTransactionData(transaction.data)
@@ -101,10 +109,10 @@ export default {
         }, 5500)
       }
     }
-    ws.onopen = (event) => {
+    this.ws.onopen = (event) => {
       setTimeout(() => {
         if (this.transactionData.status === 1) {
-          ws.send(JSON.stringify({
+          this.ws.send(JSON.stringify({
             status: 'rejected'
           }))
         }

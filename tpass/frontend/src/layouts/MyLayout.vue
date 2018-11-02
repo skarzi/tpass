@@ -1,5 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <!--
     <q-layout-header>
       <q-toolbar
         color="primary"
@@ -12,7 +13,6 @@
           round
           @click="goBack"
         >
-          <!-- app logo goes here -->
           <q-icon name="category" />
         </q-btn>
         <q-toolbar-title>
@@ -20,6 +20,7 @@
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
+    -->
 
     <q-page-container>
       <router-view />

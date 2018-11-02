@@ -4,6 +4,7 @@
     @decode="onDecode"
     :paused="paused"
     :camera="cameraOptions"
+    style="background-size: cover;"
   >
   </qrcode-stream>
 </template>
@@ -18,7 +19,8 @@ export default {
       cameraOptions: {
         audio: false,
         video: {
-          facingMode: { ideal: 'environment' }
+          facingMode: { ideal: 'environment' },
+          height: {ideal: 1080}
         }
       }
     }
@@ -26,22 +28,26 @@ export default {
   methods: {
     onDecode (decodedString) {
       this.paused = true
+      let data = JSON.parse(decodedString)
       console.log(`onDecode(): QR code data - "${decodedString}"`)
-      if (this.isQRDataValid(decodedString)) {
-        this.$emit('transaction-init', decodedString)
+      if (this.isQRDataValid(data)) {
+        this.$emit('transaction-init', data)
       } else {
-        this.$emit('invalid-data', decodedString)
+        this.$emit('invalid-data', data)
       }
       this.paused = false
     },
     isQRDataValid (data) {
-      return data.match(this.dataRegexp) !== null
+      return true
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+.qrcode-stream__camera
+  object-fit cover!imporant
+
 .camera
   height 100%
 </style>

@@ -5,7 +5,11 @@ const routes = [
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: 'scanner', component: () => import('pages/QRCodeScanner.vue') }
+      { path: 'scanner', component: () => import('pages/QRCodeScanner.vue') },
+      {
+        path: 'transactions/:transactionID',
+        component: () => import('pages/Transaction.vue')
+      }
     ]
   }
 ]

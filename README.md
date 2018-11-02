@@ -17,7 +17,6 @@ This demo project shows you:
 
 ## How it works
 ![alt text](https://lh5.googleusercontent.com/sl6Z0wHpqiFg_v_OShv7b1UZzAvIqFH2eK8AwApDL_aYAyXNorciBp8GwzvS_MV0fyC_thWdqQyupVJuSXqA=w1920-h969-rw)
-
 1. **Webservice shows you a qr code you scan with your smartphone**
 ![alt text](https://lh6.googleusercontent.com/laqRgE9t0JucRzRQAcXY9_sBHZZLGSQNk4XPX3sThW9BXJWinAUs9gWvwcB8tyqhh_TmBKwc5fmY-r-xeZ1d=w1920-h969-rw)
 2. **Message for authorization is pushed to hardware device**
@@ -115,6 +114,8 @@ cleos push action testacc hi '["DAOuser"]' -p DAOuser@active
 
 #### Hardware
 Hardware uses sparkfun nrf52832 breakout board and 128x64 monochrome oled screen with sh1106 i2c controller.
+
+![alt text](https://lh6.googleusercontent.com/9UITQkZWaEraV00-TlSD-nJtVrFnaR-M58xQcRNi5mjntNouXicZEHnypGd7j972Kg7EX7sMwDXWzXRDdkei=w1920-h920-rw)
 
 To install it on your arduino board you should follow instruction on website [Arduino](https://www.arduino.cc/en/Guide/HomePage)
 
